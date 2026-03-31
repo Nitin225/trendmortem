@@ -1,8 +1,7 @@
- 
 .env
+*.csv
 __pycache__/
 *.pyc
-.ipynb_checkpoints
-.virtual_documents
-anaconda_project\db
-anaconda_project
+.ipynb_checkpoints/
+.virtual_documents/
+anaconda_projects/
