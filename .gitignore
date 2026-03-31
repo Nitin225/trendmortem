@@ -2,7 +2,7 @@
 .env
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
-.virtual_documents/
+.ipynb_checkpoints
+.virtual_documents
 anaconda_project\db
 anaconda_project
