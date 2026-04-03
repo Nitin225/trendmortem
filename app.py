@@ -2,6 +2,12 @@ from fastapi import FastAPI
 import joblib
 import pandas as pd
 from pydantic import BaseModel
+from groq import Groq
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 app = FastAPI()
 model = joblib.load("xgb_model.pkl")
@@ -34,7 +40,31 @@ def analyze(post: PostFeatures):
     data = data[FEATURE_ORDER]
     prediction = model.predict(data)
     probability = model.predict_proba(data)[0][1]
+    
+    prompt = f"""
+    A Reddit post has these features:
+    - Upvote ratio: {post.upvote_ratio}
+    - Controversy index: {post.controversy_index}
+    - Post hour (UTC): {post.post_hour}
+    - Title word count: {post.title_words_count}
+    - Sentiment score: {post.sentiment_score}
+    
+    Model predicted viral={int(prediction[0])} with probability {round(float(probability), 3)}.
+    
+    In 2-3 sentences, explain why this post is likely or unlikely to go viral.
+    """
+    
+    response = groq_client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    
+    explanation = response.choices[0].message.content
+    
     return {
         "viral": int(prediction[0]),
-        "probability": round(float(probability), 3)
+        "probability": round(float(probability), 3),
+        "explanation": explanation
     }
+    
+
