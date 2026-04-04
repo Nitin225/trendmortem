@@ -25,8 +25,8 @@ if st.button("Analyze"):
                     st.success("Analysis Complete!")
 
                     st.write("### Prediction")
-                    st.write(f"Viral: {data['viral']}")
-                    st.write(f"Probability: {data['probability']}")
+                    st.write(f"Viral: {'Yes ' if data['viral'] == 1 else 'No '}")
+                    st.metric("Viral Probability", f"{data['probability']*100:.1f}%")
 
                     st.write("### Explanation")
                     st.write(data["explanation"])
