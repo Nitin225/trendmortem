@@ -15,7 +15,7 @@ TrendMortem is an ML-powered tool that analyzes any Reddit post URL and predicts
 
 ---
 
-## Tech Stack
+## tech Stack
 
 - **ML Model** — XGBoost (viral recall: 0.78)
 - **NLP** — VADER Sentiment Analysis
