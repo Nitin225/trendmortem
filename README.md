@@ -29,7 +29,7 @@ TrendMortem is an ML-powered tool that analyzes any Reddit post URL and predicts
 
 ## Features
 
-- Paste any Reddit URL → instant virality prediction
+- Paste any Reddit URL → and get instant virality prediction
 - Controversy index derived from upvote ratio + comment velocity
 - SHAP-based feature importance — not a black box
 - LLM explanation — why this post will/won't go viral
