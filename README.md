@@ -5,7 +5,7 @@ TrendMortem is an ML-powered tool that analyzes any Reddit post URL and predicts
 
 ---
 
-## How it works
+## How it Works
 
 1. User pastes a Reddit post URL
 2. Backend fetches post data from Reddit API
