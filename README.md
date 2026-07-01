@@ -1,4 +1,4 @@
-# TrendMortem 
+# Trendmortem 
 > Will your Reddit post go viral?
 
 TrendMortem is an ML-powered tool that analyzes any Reddit post URL and predicts its virality using classical machine learning, NLP, and LLM-generated explanations.
