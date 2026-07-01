@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import pandas as pd
 from pydantic import BaseModel
@@ -12,6 +13,14 @@ load_dotenv()
 groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 model = joblib.load("xgb_model.pkl")
 
 @app.get("/")
@@ -87,7 +96,3 @@ def analyze_url(post: PostURL):
         "success": False,
         "error": str(e)
         }
-    
-
-    
-
